@@ -1,5 +1,4 @@
 # Incedent Event 
-Laravel Lumen Framework (Kernel)
 
 An incident is an event that could lead to loss of, or disruption to, an organization's operations, services, or functions. Incident management is a term describing the activities of an organization to identify, analyze, and correct hazards to prevent future re-occurrence.
 
@@ -22,17 +21,22 @@ Technology used
 ```
 
 ## API Endpoint List
-1. http://localhost:8080/login
 
-parameters: 
+| Name                      | Method | Endpoint              |
+| ------------------------- | ------ | --------------------- |
+| /login                    | POST   | Login User            |
+| /incidents                | GET    | Get List of Incidents |
+| /incidents                | POST   | Post Incidents        |
+
+### Login Credentials
+
 ```bash
     email : shrutika@boppotech.com
     Password: boppo@123
 ```
-2. http://localhost:8080/incidents
-3. http://localhost:8080/incidents 
 
 ## Unit Test Cases For API List
+
 1. GET request
 
 ```bash
