@@ -40,7 +40,8 @@ class PostIncidentTest extends TestCase
                 "incidentDate" =>  "2020-09-01T13:26:00+00:00",
                 "createDate" =>  "2020-09-01T13:32:59+01:00",
                 "modifyDate" =>  "2020-09-01T13:32:59+01:00"
-            ]
+            ],
+            ['HTTP_Authorization' => 'Bearer ' . $this->token()]
         )
             ->seeJson([
                 'created' => true,
@@ -72,11 +73,12 @@ class PostIncidentTest extends TestCase
                 "incidentDate" =>  "2020-09-01T13:26:00+00:00",
                 "createDate" =>  "2020-09-01T13:32:59+01:00",
                 "modifyDate" =>  "2020-09-01T13:32:59+01:00"
-            ]
+            ],
+            ['HTTP_Authorization' => 'Bearer ' . $this->token()]
         )
-            ->seeJson([
-                'created' => true,
-            ]);
+        ->seeJson([
+            'created' => false,
+        ]);
     }
 
     public function testCategoryIdRequire()
@@ -107,10 +109,11 @@ class PostIncidentTest extends TestCase
                 "incidentDate" =>  "2020-09-01T13:26:00+00:00",
                 "createDate" =>  "2020-09-01T13:32:59+01:00",
                 "modifyDate" =>  "2020-09-01T13:32:59+01:00"
-            ]
+            ],
+            ['HTTP_Authorization' => 'Bearer ' . $this->token()]
         )
             ->seeJson([
-                'created' => true,
+                'created' => false,
             ]);
     }
 
@@ -143,10 +146,11 @@ class PostIncidentTest extends TestCase
                 "incidentDate" =>  "2020-09-01T13:26:00+00:00",
                 "createDate" =>  "2020-09-01T13:32:59+01:00",
                 "modifyDate" =>  "2020-09-01T13:32:59+01:00"
-            ]
+            ],
+            ['HTTP_Authorization' => 'Bearer ' . $this->token()]
         )
         ->seeJson([
-            'created' => true,
+            'created' => false,
         ]);
     }
 
@@ -179,10 +183,11 @@ class PostIncidentTest extends TestCase
                 "incidentDate" =>  "2020-13-01T13:26:00+00:00",
                 "createDate" =>  "2020-09-01T13:32:59+01:00",
                 "modifyDate" =>  "2020-09-01T13:32:59+01:00"
-            ]
+            ],
+            ['HTTP_Authorization' => 'Bearer ' . $this->token()]
         )
             ->seeJson([
-                'created' => true,
+                'created' => false,
             ]);
     }
 }

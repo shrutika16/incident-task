@@ -16,7 +16,7 @@ class CreateIncidentTable extends Migration
         Schema::create('incident', function (Blueprint $table) {
             $table->id();
             $table->string('title', '255');
-            $table->integer('category_id');
+            $table->foreignId('category_id');
             $table->text('comments');
             $table->dateTime('incident_date', $precision = 0);
             $table->timestamps();

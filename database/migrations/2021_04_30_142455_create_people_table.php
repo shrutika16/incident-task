@@ -15,7 +15,7 @@ class CreatePeopleTable extends Migration
     {
         Schema::create('people', function (Blueprint $table) {
             $table->id();
-            $table->integer('incident_id');
+            $table->foreignId('incident_id');
             $table->string('name', '255');
             $table->string('type', '255');
             $table->timestamps();

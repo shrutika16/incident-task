@@ -12,8 +12,8 @@ class GetIncidentTest extends TestCase
      */
     public function testGetIncident()
     {
-
-        $response = $this->call('GET', '/incidents');
+        dd($this->token());
+        $response = $this->call('GET', '/incidents', ['HTTP_Authorization' => 'Bearer '. $this->token()]);
 
         $this->assertEquals(200, $response->status());
     }

@@ -47,7 +47,7 @@ class IncidentController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response(['errors' => $validator->errors()->all()], 422);
+            return response(['created' => false, 'errors' => $validator->errors()->all()], 422);
         }
 
         $query = DB::transaction(function () use ($request){
