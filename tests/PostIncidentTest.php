@@ -13,7 +13,8 @@ class PostIncidentTest extends TestCase
      */
     public function testPostIncident()
     {
-        $this->post(
+        $response = $this->call(
+            'POST',
             '/incidents',
             [
                 'title' => 'incident title',
@@ -42,15 +43,14 @@ class PostIncidentTest extends TestCase
                 "modifyDate" =>  "2020-09-01T13:32:59+01:00"
             ],
             ['HTTP_Authorization' => 'Bearer ' . $this->token()]
-        )
-            ->seeJson([
-                'created' => true,
-            ]);
+        );
+        $this->assertEquals(200, $response->status());
     }
 
     public function testlocationValidation()
     {
-        $this->post(
+        $response = $this->call(
+            'POST',
             '/incidents',
             [
                 'title' => 'incident title',
@@ -75,15 +75,14 @@ class PostIncidentTest extends TestCase
                 "modifyDate" =>  "2020-09-01T13:32:59+01:00"
             ],
             ['HTTP_Authorization' => 'Bearer ' . $this->token()]
-        )
-        ->seeJson([
-            'created' => false,
-        ]);
+        );
+        $this->assertEquals(422, $response->status());
     }
 
     public function testCategoryIdRequire()
     {
-        $this->post(
+        $response = $this->call(
+            'POST',
             '/incidents',
             [
                 'title' => 'incident title',
@@ -111,15 +110,14 @@ class PostIncidentTest extends TestCase
                 "modifyDate" =>  "2020-09-01T13:32:59+01:00"
             ],
             ['HTTP_Authorization' => 'Bearer ' . $this->token()]
-        )
-            ->seeJson([
-                'created' => false,
-            ]);
+        );
+        $this->assertEquals(422, $response->status());
     }
 
     public function testCategoryIdInvalid()
     {
-        $this->post(
+        $response = $this->call(
+            'POST',
             '/incidents',
             [
                 'title' => 'incident title',
@@ -148,15 +146,14 @@ class PostIncidentTest extends TestCase
                 "modifyDate" =>  "2020-09-01T13:32:59+01:00"
             ],
             ['HTTP_Authorization' => 'Bearer ' . $this->token()]
-        )
-        ->seeJson([
-            'created' => false,
-        ]);
+        );
+        $this->assertEquals(422, $response->status());
     }
 
     public function testIncidentDateVAlidation()
     {
-        $this->post(
+        $response = $this->call(
+            'POST',
             '/incidents',
             [
                 'title' => 'incident title',
@@ -185,9 +182,7 @@ class PostIncidentTest extends TestCase
                 "modifyDate" =>  "2020-09-01T13:32:59+01:00"
             ],
             ['HTTP_Authorization' => 'Bearer ' . $this->token()]
-        )
-            ->seeJson([
-                'created' => false,
-            ]);
+        );
+        $this->assertEquals(422, $response->status());
     }
 }

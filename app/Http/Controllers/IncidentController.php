@@ -47,7 +47,7 @@ class IncidentController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response(['created' => false, 'errors' => $validator->errors()->all()], 422);
+            return response(['errors' => $validator->errors()->all()], 422);
         }
 
         $query = DB::transaction(function () use ($request){
@@ -85,7 +85,7 @@ class IncidentController extends Controller
         ->find($incident->id);
 
         if($incidents){
-            return response(['created' =>true ,'data' => $incidents], 200);
+            return response(['data' => $incidents], 200);
         }
 
         return response(['errors' => 'somthing went wrong, please try again'], 422);
